@@ -5,22 +5,27 @@ app = QApplication(sys.argv)
 angka = QWidget()
 lb1 = QLabel(angka)
 panjang = QLineEdit()
+panjang.setStyleSheet("border : 1px solid ; font-size:25px; ")
 lebar = QLineEdit()
+lebar.setStyleSheet("border : 1px solid ; font-size:25px; ")
 
 def perspanjang():
    awal = QFormLayout(angka)
    b1 = QLabel()
    b1.setText("Masukkan panjang : ")
+   b1.setStyleSheet("border : 1px solid black; color:black; font-size:20px")
    awal.addRow(b1)
    awal.addRow(panjang)
    
    b1 = QLabel()
    b1.setText("Masukkan Lebar : ")
+   b1.setStyleSheet("border : 1px solid black; color:black; font-size:20px")
    awal.addRow(b1)
    awal.addRow(lebar)
 
    btn1 = QPushButton()
    btn1.setText("Hitung Keliling Persegi Panjang")
+   btn1.setStyleSheet("font:bold ; color:white ;font-size:20px;background-color:pink")
    btn1.clicked.connect(hitung)
    awal.addRow(btn1)
 
@@ -36,14 +41,17 @@ def hitung():
         bil1 = int(panjang.text())
     except ValueError:
         lb1.setText("Inputan Panjang harus Angka")
+        lb1.setStyleSheet("font:bold; color:red; font-size:15px")
     else:
         try:
             bil2 = int(lebar.text())
         except ValueError:
             lb1.setText("Inputan Lebar harus Angka")
+            lb1.setStyleSheet("font:bold; color:red; font-size:15px")
         else:
             hasil = 2*bil1+2*bil2
             lb1.setText("Hasil : " + str(hasil))
+            lb1.setStyleSheet("font:bold; color:white ; font-size:20px;background-color:pink")
 
 if __name__ == '__main__':
     perspanjang()
