@@ -1,0 +1,49 @@
+import sys
+from PyQt5.QtWidgets import *
+
+app = QApplication(sys.argv)
+angka = QWidget()
+lb1 = QLabel(angka)
+panjang = QLineEdit()
+lebar = QLineEdit()
+
+def perspanjang():
+   awal = QFormLayout(angka)
+   b1 = QLabel()
+   b1.setText("Masukkan panjang : ")
+   awal.addRow(b1)
+   awal.addRow(panjang)
+   
+   b1 = QLabel()
+   b1.setText("Masukkan Lebar : ")
+   awal.addRow(b1)
+   awal.addRow(lebar)
+
+   btn1 = QPushButton()
+   btn1.setText("Hitung Keliling Persegi Panjang")
+   btn1.clicked.connect(hitung)
+   awal.addRow(btn1)
+
+   awal.addRow(lb1)
+
+   angka.setGeometry(100,100,500,300)
+   angka.setWindowTitle("PyQt perspanjang")
+   angka.show()
+   sys.exit(app.exec_())
+
+def hitung():
+    try:
+        bil1 = int(panjang.text())
+    except ValueError:
+        lb1.setText("Inputan Panjang harus Angka")
+    else:
+        try:
+            bil2 = int(lebar.text())
+        except ValueError:
+            lb1.setText("Inputan Lebar harus Angka")
+        else:
+            hasil = 2*bil1+2*bil2
+            lb1.setText("Hasil : " + str(hasil))
+
+if __name__ == '__main__':
+    perspanjang()
